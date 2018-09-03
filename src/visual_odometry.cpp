@@ -7,9 +7,9 @@ const int kMinNumFeature = 300;
 Visual_Odometry::Visual_Odometry(PinholeCamera* cam):cam_(cam)
 {
 
-this->focal_ = this->cam_->fx();
-this->pp_  = cv::Point2d(this->cam_->cx(), this->cam_->cy());
-this->frame_stage_ = STAGE_FIRST_FRAME;
+    this->focal_ = this->cam_->fx();
+    this->pp_  = cv::Point2d(this->cam_->cx(), this->cam_->cy());
+    this->frame_stage_ = STAGE_FIRST_FRAME;
 
 }
 
