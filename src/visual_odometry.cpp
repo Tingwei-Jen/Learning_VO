@@ -77,8 +77,8 @@ bool Visual_Odometry::processFrame(int frame_id)
     E = cv::findEssentialMat(this->px_cur_, this->px_ref_, this->focal_, this->pp_, cv::RANSAC, 0.999, 1.0, mask);
     cv::recoverPose(E, this->px_cur_, this->px_ref_, R, t, this->focal_, this->pp_, mask);
 
-	this->cur_R_ = R.clone();
-	this->cur_t_ = t.clone();
+	this->cur_R_ = R*this->cur_R_;
+	this->cur_t_ = this->cur_t_ + scale*(this->cur_R_*t);
 
 	// 如果跟踪特征点数小于给定阈值，进行重新特征检测
    
